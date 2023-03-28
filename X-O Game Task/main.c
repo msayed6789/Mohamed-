@@ -1,7 +1,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#define player1   0
+#define player2   1
 typedef unsigned char   uint8_t;
 
 uint8_t configArray[3]={0,0,0};
@@ -39,11 +40,11 @@ void updateBoard (uint8_t *board, uint8_t position, uint8_t value)
         board[position-1]=value;
     }
 }
-uint8_t getPlayerSymbol(uint8_t playerNumber, uint8_t * symbol)
+uint8_t getPlayerSymbol(uint8_t playerNumber, uint8_t* symbol)
 {
-    if (playerNumber==1)
+    if (playerNumber==0)
     {
-        if (symbol[playerNumber-1]=='x'||symbol[playerNumber-1]=='o'||symbol[playerNumber-1]=='X'||symbol[playerNumber-1]=='O')
+        if (symbol[playerNumber]=='x'||symbol[playerNumber]=='o'||symbol[playerNumber]=='X'||symbol[playerNumber]=='O')
         {
             return 0;
         }
@@ -57,9 +58,9 @@ uint8_t getPlayerSymbol(uint8_t playerNumber, uint8_t * symbol)
     }
     else
     {
-        if (symbol[playerNumber-1]!=symbol[playerNumber-2])
+        if (symbol[playerNumber]!=symbol[playerNumber+1])
         {
-            if (symbol[playerNumber-1]=='x'||symbol[playerNumber-1]=='o'||symbol[playerNumber-1]=='X'||symbol[playerNumber-1]=='O')
+            if (symbol[playerNumber]=='x'||symbol[playerNumber]=='o'||symbol[playerNumber]=='X'||symbol[playerNumber]=='O')
             {
                 return 0;
             }
@@ -88,10 +89,10 @@ void setPlayerConfig(uint8_t *configArray)
     {
         printf("Enter your symbol (x or o)\n");
         printf("Player 1\n");
-        scanf(" %[^\n]s",&configArray[0]);
+        scanf(" %[^\n]s",&configArray[player1]);
         if (configArray[1]==0)
         {
-            check=getPlayerSymbol(1,configArray);
+            check=getPlayerSymbol(player1,configArray);
         }
         else
         {
@@ -105,12 +106,12 @@ void setPlayerConfig(uint8_t *configArray)
     while (check==1)
     {
         printf("Player 2\n");
-        scanf(" %[^\n]s",&configArray[1]);
+        scanf(" %[^\n]s",&configArray[player2]);
 
 
 if (configArray[2]==0)
         {
-            check=getPlayerSymbol(1,configArray);
+            check=getPlayerSymbol(player2,configArray);
         }
         else
         {
@@ -177,7 +178,7 @@ int main()
     printf("%c\n",configArray[1]);
     printf("**************\n");
     printf("Start the game\n");
-    printf("Player 1 is : %c               player 2 is : %c \n",configArray[0],configArray[1]);
+    printf("Player 1 is : %c               player 2 is : %c \n",configArray[player1],configArray[player2]);
     printf("**************\n");
     drawBoard(board);
     for ( i=1; i<=9; i++)
@@ -185,8 +186,8 @@ int main()
         if (i%2!=0)
         {
             printf("Player1's turn\n");
-            loadAndUpdate(1);
-            updateBoard(board,position,configArray[0]);
+            loadAndUpdate(player1);
+            updateBoard(board,position,configArray[player1]);
             if (Error_Input_Flag==1)
             {
                 printf("Wrong Input....Please Enter Again\n");
@@ -205,8 +206,8 @@ int main()
         else
         {
             printf("Player2's turn\n");
-            loadAndUpdate(2);
-            updateBoard(board,position,configArray[1]);
+            loadAndUpdate(player2);
+            updateBoard(board,position,configArray[player2]);
             if (Error_Input_Flag==1)
             {
                 printf("Wrong Input....Please Enter Again\n");
@@ -247,4 +248,3 @@ int main()
     return 0;
 
 }
-
