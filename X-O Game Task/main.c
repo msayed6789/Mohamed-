@@ -1,4 +1,5 @@
 
+
 #include <stdio.h>
 #include <stdlib.h>
 #define player1   0
@@ -58,9 +59,9 @@ uint8_t getPlayerSymbol(uint8_t playerNumber, uint8_t* symbol)
     }
     else
     {
-        if (symbol[playerNumber]!=symbol[playerNumber+1])
+        if (symbol[playerNumber-1]=='x'||symbol[playerNumber-1]=='X')
         {
-            if (symbol[playerNumber]=='x'||symbol[playerNumber]=='o'||symbol[playerNumber]=='X'||symbol[playerNumber]=='O')
+            if (symbol[playerNumber]=='o'||symbol[playerNumber]=='O')
             {
                 return 0;
             }
@@ -73,12 +74,20 @@ uint8_t getPlayerSymbol(uint8_t playerNumber, uint8_t* symbol)
             }
 
         }
-        else
+        else if (symbol[playerNumber-1]=='o'||symbol[playerNumber-1]=='O')
         {
-            printf("Wrong symbol...player 1 was selected this symbol\n");
-            printf("please enter again\n");
-            printf("*******************\n");
-            return 1;
+            if (symbol[playerNumber]=='x'||symbol[playerNumber]=='X')
+            {
+                return 0;
+            }
+            else
+            {
+                printf("Wrong symbol\n");
+                printf("please enter again\n");
+                printf("*******************\n");
+                return 1;
+            }
+
         }
     }
 }
@@ -248,3 +257,5 @@ int main()
     return 0;
 
 }
+
+
