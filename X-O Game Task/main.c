@@ -42,7 +42,7 @@ uint8_t getPlayerSymbol(uint8_t playerNumber, uint8_t * symbol)
 {
     if (playerNumber==1)
     {
-        if (symbol[playerNumber-1]=='x'||symbol[playerNumber-1]=='o')
+        if (symbol[playerNumber-1]=='x'||symbol[playerNumber-1]=='o'||symbol[playerNumber-1]=='X'||symbol[playerNumber-1]=='O')
         {
             return 0;
         }
@@ -59,7 +59,7 @@ uint8_t getPlayerSymbol(uint8_t playerNumber, uint8_t * symbol)
     {
         if (symbol[playerNumber-1]!=symbol[playerNumber-2])
         {
-            if (symbol[playerNumber-1]=='x'||symbol[playerNumber-1]=='o')
+            if (symbol[playerNumber-1]=='x'||symbol[playerNumber-1]=='o'||symbol[playerNumber-1]=='X'||symbol[playerNumber-1]=='O')
             {
                 return 0;
             }
