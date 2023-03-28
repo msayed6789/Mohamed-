@@ -1,9 +1,10 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 
 typedef unsigned char   uint8_t;
 
-uint8_t configArray[2];
+uint8_t configArray[3]={0,0,0};
 uint8_t position;
 uint8_t Error_Input_Flag=0;
 void drawBoard(uint8_t *board)
@@ -29,7 +30,7 @@ void drawBoard(uint8_t *board)
 }
 void updateBoard (uint8_t *board, uint8_t position, uint8_t value)
 {
-    if (board[position-1]!=position||(position<1||position>9))
+    if (board[position-1]!=position||position<1||position>9)
     {
         Error_Input_Flag=1;
     }
@@ -53,7 +54,6 @@ uint8_t getPlayerSymbol(uint8_t playerNumber, uint8_t * symbol)
             printf("*******************\n");
             return 1;
         }
-
     }
     else
     {
@@ -79,10 +79,7 @@ uint8_t getPlayerSymbol(uint8_t playerNumber, uint8_t * symbol)
             printf("*******************\n");
             return 1;
         }
-
-
     }
-
 }
 void setPlayerConfig(uint8_t *configArray)
 {
@@ -91,33 +88,45 @@ void setPlayerConfig(uint8_t *configArray)
     {
         printf("Enter your symbol (x or o)\n");
         printf("Player 1\n");
-        scanf(" %c",&configArray[0]);
-        check=getPlayerSymbol(1,configArray);
+        scanf(" %[^\n]s",&configArray[0]);
+        if (configArray[1]==0)
+        {
+            check=getPlayerSymbol(1,configArray);
+        }
+        else
+        {
+            printf("Wrong symbol...please enter only x or o\n");
+            printf("please enter again\n");
+                printf("*******************\n");
+        }
     }
 
     check=1;
     while (check==1)
     {
         printf("Player 2\n");
-        scanf(" %c",&configArray[1]);
-        check=getPlayerSymbol(2,configArray);
-    }
-    /*
-        if (configArray[0]=='x')
-        {
+        scanf(" %[^\n]s",&configArray[1]);
 
-            configArray[1]='o';
+
+if (configArray[2]==0)
+        {
+            check=getPlayerSymbol(1,configArray);
         }
         else
         {
-            configArray[1]='x';
+            printf("Wrong symbol...please enter only x or o\n");
+                printf("please enter again\n");
+                printf("*******************\n");
         }
-        */
+    }
 }
+
 void loadAndUpdate(uint8_t playerNumber)
 {
     printf("Enter the wanted position\n");
-    scanf("%d",&position);
+
+    scanf(" %d",&position);
+
 }
 
 void getGameState(uint8_t *board, uint8_t *gameState)
@@ -190,7 +199,9 @@ int main()
                 getGameState(board,&game_State);
                 drawBoard(board);
             }
+
         }
+
         else
         {
             printf("Player2's turn\n");
@@ -234,4 +245,6 @@ int main()
     }
 
     return 0;
+
 }
+
