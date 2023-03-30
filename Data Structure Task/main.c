@@ -196,6 +196,7 @@ void Stack_Test(void)
         }
         else if (ch==0)
         {
+            free(s);
             break;
         }
     }
@@ -253,6 +254,7 @@ int8_t isBalancedParanthethes(uint8_t *expression)
         {
             return -2;
         }
+        free(expression_stack);
     }
 
     return 0;
