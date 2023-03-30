@@ -44,7 +44,7 @@ int main()
             {
                 printArray(arr,arraySize);
             }
-
+           free(arr);
         }
         else if (ch==2)
         {
@@ -221,13 +221,4 @@ int main()
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
 
