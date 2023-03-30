@@ -256,7 +256,6 @@ int8_t isBalancedParanthethes(uint8_t *expression)
         }
         
     }
-    free(expression_stack);
     return 0;
 }
 
