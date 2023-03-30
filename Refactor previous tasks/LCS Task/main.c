@@ -38,7 +38,7 @@ int main()
             }
             else if (array_status==-2)
             {
-                printf("The array is oversize\n");
+                printf("The array is out of the range\n");
             }
             else
             {
@@ -70,7 +70,7 @@ int main()
                     }
                     else if (array_status==-2)
                     {
-                        printf("The size of array>10\n");
+                        printf("The array is out of the range\n");
                     }
                     else if (array_status==-3)
                     {
@@ -98,7 +98,7 @@ int main()
                     }
                     else if (array_status==-2)
                     {
-                        printf("The size of array>10/=0\n");
+                        printf("The array is out of the range\n");
                     }
                     else if (array_status==-3)
                     {
@@ -130,7 +130,7 @@ int main()
                     }
                     else if (array_status==-2)
                     {
-                        printf("The size of array>10\n");
+                        printf("The array is out of the range\n");
                     }
                     else if (array_status==-3)
                     {
@@ -163,7 +163,7 @@ int main()
                     }
                     else if (array_status==-2)
                     {
-                        printf("The size of array>10\n");
+                        printf("The array is out of the range\n");
                     }
                     else if (array_status==-3)
                     {
@@ -196,7 +196,7 @@ int main()
                     }
                     else if (array_status==-2)
                     {
-                        printf("The size of array>10\n");
+                        printf("The array is out of the range\n");
                     }
                     else
                     {
