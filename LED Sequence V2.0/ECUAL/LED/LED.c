@@ -7,20 +7,7 @@
 
 #include "LED.h"
 
-/*
- void LED_init(LED_Num LED)
-{
-		DIO_InitPin(LED,OUTPUT);
-}
-void LED_init1All()
-{
-	u8 i;
-	for (i=LED_1;i<LED_Total;i++)
-	{
-		LED_init(i);
-	}
-}
-*/
+
 void LED_ON (u8 LED )
 {
 	DIO_WRitePin(LED,HIGH);
