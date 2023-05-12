@@ -61,14 +61,14 @@ typedef enum{
 }Uart_Enable_en;
 
 /********************************The value of uart register based on the baudrate**********************************************************************************/ 
-#if FCPU==8
+#if FCPU==F8MHZ
 static u16 BaudRate_arr[Baudrate_Total][Speed_Total]={
 	{207,416},
 	{103,207},
 	{51,103},
 	{34,68},
 };
-#elif FCPU==4
+#elif FCPU==F4MHZ
 static u16 BaudRate_arr[Baudrate_Total][Speed_Total]={
 	{103,207},
 	{51,103},
