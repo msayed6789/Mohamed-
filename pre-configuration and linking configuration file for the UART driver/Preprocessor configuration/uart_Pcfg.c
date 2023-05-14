@@ -5,8 +5,28 @@
  *  Author: Mohamed Sayed 
  */ 
 
-//#include "uart_Pcfg.h"
 
+/**********************************Define the CPU Frequency to detect the Baudrate********************************************************************************/
+#define F8MHZ   8
+#define F4MHZ   4
+
+#define FCPU   F8MHZ                         //The CPU Frequency in MHz
+
+/********************************The value of uart register based on the baudrate**********************************************************************************/
+#if FCPU==F8MHZ
+static u16 BaudRate_arr[Baudrate_Total][Speed_Total]={
+	{207,416},
+	{103,207},
+	{51,103},
+	{34,68},
+};
+#elif FCPU==F4MHZ
+static u16 BaudRate_arr[Baudrate_Total][Speed_Total]={
+	{103,207},
+	{51,103},
+	{25,51},
+	{16,34},
+};
 /*****************************************The Defination of Baudrate**********************************************************************************************/
 typedef enum {
 	Baudrate2400,
@@ -65,3 +85,6 @@ typedef enum{
 }Uart_Enable_en;
 
 #define  Uart_Enable   Transmitter
+
+/**********************************************************************************************************************************************************************/
+
